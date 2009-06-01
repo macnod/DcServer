@@ -1,6 +1,7 @@
 package DcClient;
 
 use IO::Socket;
+use Carp;
 use strict;
 use warnings;
 
@@ -20,7 +21,7 @@ sub query {
     PeerAddr => $self->{host} || 'localhost',
     PeerPort => $self->{port} || 8191,
     Proto => 'tcp');
-  die "$!. Is the server running?\n" unless $socket;
+  croak "$!. Is the server running?\n" unless $socket;
   print $socket $query . "\n.\n";
   while($buffer= <$socket>) {
     $reply.= $buffer;

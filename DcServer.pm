@@ -90,7 +90,6 @@ sub accept_requests {
       $socket{$n}->shutdown(2);
       delete $socket{$n}}}
   $lsocket->shutdown(2);
-  print "Thread ", threads->tid, " terminated.\n";
 }
 
 sub request_handler {
